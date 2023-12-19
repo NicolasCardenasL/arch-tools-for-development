@@ -1,0 +1,34 @@
+﻿#!/bin/bash
+# Otorgar permisos de ejecución al script
+chmod +x "$0"
+
+
+# Resto del contenido del script...
+
+
+# Instalar paquetes desde repositorios oficiales de Arch Linux
+sudo pacman -Syu --noconfirm  # Actualizar la base de datos de paquetes y el sistema
+
+
+
+
+# Instalar paquetes desde repositorios oficiales de Arch Linux
+sudo pacman -Syyu --noconfirm  # Actualizar la base de datos de paquetes y el sistema
+
+
+# Instalar paquetes desde repositorios oficiales
+sudo pacman -S --noconfirm git docker code python gnome-tweaks wine rofi lf
+
+
+# Instalar yay (AUR helper) si aún no está instalado
+if ! command -v yay &> /dev/null; then
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si --noconfirm
+    cd ..
+    rm -rf yay
+fi
+
+
+# Instalar Google Chrome usando yay desde AUR
+yay -S --noconfirm google-chrome
